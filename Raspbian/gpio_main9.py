@@ -6,7 +6,12 @@ from PyQt5.QtCore import *
 import RPi.GPIO as GPIO
 import time
 
+SERVO = 12
 GPIO.setmode(GPIO.BOARD)
+GPIO.setup(SERVO, GPIO.OUT)
+
+pwm = GPIO.PWM(SERVO, 50)
+pwm.start(3.0)
 
 class MyApp(QWidget):
 
@@ -38,6 +43,7 @@ class MyApp(QWidget):
 
     def Dial_Changed(self):
         self.label.setText(str(self.dial.value()))
+        pwm.ChangeDutyCycle(float(self.dial.value()))
 
 if __name__ =='__main__':
     app = QApplication(sys.argv)
