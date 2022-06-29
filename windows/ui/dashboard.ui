@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1200</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1200</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1200</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>1200</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="font">
+   <font>
+    <family>나눔고딕코딩</family>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>EMS SCADA</string>
+  </property>
+  <property name="iconSize">
+   <size>
+    <width>64</width>
+    <height>64</height>
+   </size>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QFrame" name="totalFrame">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>1181</width>
+      <height>581</height>
+     </rect>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QFrame" name="headFrame">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>1181</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(41, 42, 55);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QFrame" name="iconFrame">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>4</y>
+        <width>71</width>
+        <height>64</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-image: url(:/iot);
+background-repeat: no-repeat</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="IoTTitle">
+      <property name="geometry">
+       <rect>
+        <x>113</x>
+        <y>6</y>
+        <width>371</width>
+        <height>64</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>나눔고딕코딩</family>
+        <pointsize>24</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>EMS IoT DASHBOARD</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QFrame" name="greetingFrame">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>90</y>
+       <width>220</width>
+       <height>481</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>나눔고딕코딩</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(60, 60, 90);
+border-style: outset;
+border-width:5px;
+border-color: rgb(0, 0, 255);
+border-radius:10px;</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QFrame" name="weatherFrame">
+      <property name="geometry">
+       <rect>
+        <x>78</x>
+        <y>143</y>
+        <width>64</width>
+        <height>64</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-image: url(:/sun);
+background-repeat: none;
+border: none;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblDate">
+      <property name="geometry">
+       <rect>
+        <x>35</x>
+        <y>24</y>
+        <width>150</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>나눔고딕코딩</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 170, 0);
+border: none;
+</string>
+      </property>
+      <property name="text">
+       <string>9999-99-99</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblDay">
+      <property name="geometry">
+       <rect>
+        <x>35</x>
+        <y>99</y>
+        <width>150</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>나눔고딕코딩</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 170, 0);
+border: none;
+</string>
+      </property>
+      <property name="text">
+       <string>99:99</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblTime">
+      <property name="geometry">
+       <rect>
+        <x>35</x>
+        <y>64</y>
+        <width>150</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>나눔고딕코딩</family>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 170, 0);
+border: none;
+</string>
+      </property>
+      <property name="text">
+       <string>Wednesday</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblGreeting">
+      <property name="geometry">
+       <rect>
+        <x>25</x>
+        <y>228</y>
+        <width>171</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>나눔고딕코딩</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(210, 210, 210);
+border: none;
+</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="text">
+       <string>Good Afternoon</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QFrame" name="tempFrame">
+     <property name="geometry">
+      <rect>
+       <x>970</x>
+       <y>430</y>
+       <width>220</width>
+       <height>481</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>나눔고딕코딩</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(60, 60, 90);
+border-style: outset;
+border-width:5px;
+border-color: rgb(0, 0, 255);
+border-radius:10px;</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QFrame" name="weatherFrame_7">
+      <property name="geometry">
+       <rect>
+        <x>78</x>
+        <y>143</y>
+        <width>64</width>
+        <height>64</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-image: url(:/sun);
+background-repeat: none;
+border: none;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblDate_7">
+      <property name="geometry">
+       <rect>
+        <x>35</x>
+        <y>24</y>
+        <width>150</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>나눔고딕코딩</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 170, 0);
+border: none;
+</string>
+      </property>
+      <property name="text">
+       <string>9999-99-99</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblDay_7">
+      <property name="geometry">
+       <rect>
+        <x>35</x>
+        <y>99</y>
+        <width>150</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>나눔고딕코딩</family>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 170, 0);
+border: none;
+</string>
+      </property>
+      <property name="text">
+       <string>99:99</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblTime_7">
+      <property name="geometry">
+       <rect>
+        <x>35</x>
+        <y>64</y>
+        <width>150</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>나눔고딕코딩</family>
+        <pointsize>16</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 170, 0);
+border: none;
+</string>
+      </property>
+      <property name="text">
+       <string>Wednesday</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblGreeting_7">
+      <property name="geometry">
+       <rect>
+        <x>25</x>
+        <y>228</y>
+        <width>171</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>나눔고딕코딩</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(210, 210, 210);
+border: none;
+</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="text">
+       <string>Good Afternoon</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="dashboard.qrc"/>
+ </resources>
+ <connections/>
+</ui>
