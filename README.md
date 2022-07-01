@@ -31,9 +31,21 @@ EMS 데이터 통신 및 제어프로그램
   
 ## Day 5 ~ Day 7
   - EMS 통신앱 개발
-    - MQTT
+    - MQTT Pulisher / Subscriber
+    - Thread 처리
+    - PyQt Widget 화면구성
+    - 라즈베리파이, 서버 MQTT 통신
+    - 라즈베리파이 IoT 핸들링
   
 <br />
+![라즈베리파이구성](https://raw.githubusercontent.com/kwogus1/ems_comm/main/capture/raspberrypi.png)
+
+라즈베리파이 구성
+
+![대시보드실행화면]
+(https://raw.githubusercontent.com/kwogus1/ems_comm/main/capture/dashboard.png)
+
+대시보드 실행화면
 
 ![네이버뉴스](https://raw.githubusercontent.com/kwogus1/ems_comm/main/capture/naver_news.png)
 
@@ -42,3 +54,6 @@ EMS 데이터 통신 및 제어프로그램
 ![네이버영화](https://raw.githubusercontent.com/kwogus1/ems_comm/main/capture/naver_movie.png)
 
 네이버영화 검색 앱
+
+
+
