@@ -5,19 +5,25 @@ import paho.mqtt.client as mqtt
 import json
 import datetime as dt
 
+import RPi.GPIO as GPIO
 import adafruit_dht as dht  # DHT센서용
 import board
 
-SENSOR = dht.DHT22(board.D4) # DHT11
+RED = 17
+BLUE = 27
+SENSOR = dht.DHT11(board.D4) # DHT11
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(RED, GPIO.OUT)
+GPIO.setup(BLUE, GPIO.OUT)
 
 # DHT 센서값 Publish
 class publisher(Thread):
     def __init__(self):
         Thread.__init__(self)
-        self.host = '192.168.0.17' # 강사서버
+        self.host = '192.168.0.14' # 강사서버
         self.port = 1883
         print('publisher 스레드 시작')
-        self.client = mqtt.Client(client_id='EMS01')
+        self.client = mqtt.Client(client_id='EMS08')
 
     def run(self):
         self.client.connect(self.host, self.port)
@@ -28,7 +34,7 @@ class publisher(Thread):
             t = SENSOR.temperature
             h = SENSOR.humidity
             curr = dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            origin_data = { 'DEV_ID' : 'EMS01', 'CURR_DT' : curr,
+            origin_data = { 'DEV_ID' : 'EMS08', 'CURR_DT' : curr,
                             'TEMP' : t, 'HUMID' : h }
             pub_data = json.dumps(origin_data)
             self.client.publish(topic='ems/rasp/data/',
@@ -42,10 +48,10 @@ class publisher(Thread):
 class subscriber(Thread):
     def __init__(self):
         Thread.__init__(self)
-        self.host = '192.168.0.17' # 강사서버
+        self.host = '192.168.0.14' # 강사서버
         self.port = 1883        
         print('subscriber 스레드 시작')
-        self.client = mqtt.Client(client_id='EMS91')
+        self.client = mqtt.Client(client_id='EMS98')
 
     def onConnect(self, mqttc, obj, flags, rc):
         print(f'sub:connected with rc > {rc}')
@@ -53,6 +59,14 @@ class subscriber(Thread):
     def onMessage(self, mqttc, obj, msg):
         rcv_msg = str(msg.payload.decode('utf-8'))
         print(f'{msg.topic} / {rcv_msg}')
+        data = json.loads(rcv_msg)
+        type = print(data['TYPE'])
+        stat = print(data['STAT'])
+        if type == 'AIRCON' and stat == 'ON':
+            GPIO.ouput(RED, GPIO.HIGH)
+        elif type == 'AIRCON' and stat == 'OFF':
+            GPIO.ouput(RED, GPIO.LOW)
+
         time.sleep(1.0)
 
     def run(self):
@@ -63,7 +77,12 @@ class subscriber(Thread):
         self.client.loop_forever()
 
 if __name__ == '__main__':
-    thPub = publisher()
-    thSub = subscriber()
-    thPub.start()    
-    thSub.start()
+    try:
+        thPub = publisher()
+        thSub = subscriber()
+        thPub.start()    
+        thSub.start()
+    except KeyboardInterrupt:
+        GPIO.output(RED, GPIO.LOW)
+        GPIO.output(BLUE, GPIO.LOW)
+        GPIO.cleanup()
