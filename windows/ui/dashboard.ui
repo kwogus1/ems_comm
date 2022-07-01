@@ -481,7 +481,7 @@ border: none;
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
       </property>
      </widget>
-     <widget class="QPushButton" name="btnTempAlarm">
+     <widget class="QPushButton" name="btnTempStop">
       <property name="geometry">
        <rect>
         <x>180</x>
@@ -492,7 +492,7 @@ border: none;
       </property>
       <property name="styleSheet">
        <string notr="true">border-style: none;
-background-image: url(:/alarm);
+background-image: url(:/stop);
 background-repeat: no-repeat;</string>
       </property>
       <property name="text">
@@ -524,6 +524,24 @@ border: none;
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnTempAlarm">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>260</y>
+        <width>48</width>
+        <height>48</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-style: none;
+background-image: url(:/alarm);
+background-repeat: no-repeat;</string>
+      </property>
+      <property name="text">
+       <string>PushButton</string>
       </property>
      </widget>
     </widget>
@@ -662,22 +680,76 @@ border: none;
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
       </property>
      </widget>
-     <widget class="QDial" name="dialHumid">
+     <widget class="QLabel" name="lblTempAlarm_2">
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>260</y>
-        <width>161</width>
-        <height>171</height>
+        <x>50</x>
+        <y>230</y>
+        <width>141</width>
+        <height>25</height>
        </rect>
       </property>
-      <property name="invertedAppearance">
-       <bool>false</bool>
+      <property name="font">
+       <font>
+        <family>나눔고딕코딩</family>
+        <pointsize>10</pointsize>
+       </font>
       </property>
-      <property name="notchesVisible">
-       <bool>true</bool>
+      <property name="styleSheet">
+       <string notr="true">color: rgb(255, 255, 255);
+border: none;
+</string>
+      </property>
+      <property name="text">
+       <string>EMS99 Temperature</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
+     <widget class="QPushButton" name="btnHumidAlarm">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>260</y>
+        <width>48</width>
+        <height>48</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-style: none;
+background-image: url(:/alarm);
+background-repeat: no-repeat;</string>
+      </property>
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnHumidStop">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>260</y>
+        <width>48</width>
+        <height>48</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-style: none;
+background-image: url(:/stop);
+background-repeat: no-repeat;</string>
+      </property>
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
+     <zorder>HumidiconFrame_2</zorder>
+     <zorder>lblHumidTitle</zorder>
+     <zorder>lblCurrHumid</zorder>
+     <zorder>lblCurrHumid_2</zorder>
+     <zorder>btnHumidAlarm</zorder>
+     <zorder>btnHumidStop</zorder>
+     <zorder>lblTempAlarm_2</zorder>
     </widget>
     <widget class="QFrame" name="HumidFrame_2">
      <property name="geometry">
@@ -735,10 +807,32 @@ border: none;
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
       </property>
      </widget>
+     <widget class="QChartView" name="dataView" native="true">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>50</y>
+        <width>381</width>
+        <height>411</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(244, 244, 244);
+border width: 2pc;</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QChartView</class>
+   <extends>QWidget</extends>
+   <header>PyQt5.QtChart</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="dashboard.qrc"/>
  </resources>
