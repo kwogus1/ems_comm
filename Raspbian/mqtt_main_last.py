@@ -1,34 +1,34 @@
-## MQTT Pub/Sub App
+# MQTT Pub/Sub App
 from threading import Thread, Timer
 import time
 import paho.mqtt.client as mqtt
 import json
 import datetime as dt
 
-import adafruit_dht as dht # DHT센서용
+import adafruit_dht as dht  # DHT센서용
 import board
 
-SENSOR = dht.DHT11(board.D4) # DHT11
+SENSOR = dht.DHT22(board.D4) # DHT11
 
 # DHT 센서값 Publish
 class publisher(Thread):
     def __init__(self):
         Thread.__init__(self)
-        self.host = '192.168.0.14'
+        self.host = '192.168.0.17' # 강사서버
         self.port = 1883
         print('publisher 스레드 시작')
-        self.client = mqtt.Client(client_id='EMS08')
+        self.client = mqtt.Client(client_id='EMS01')
 
     def run(self):
         self.client.connect(self.host, self.port)
         self.publish_data_auto()        
 
     def publish_data_auto(self):
-        try:
+        try:            
             t = SENSOR.temperature
             h = SENSOR.humidity
             curr = dt.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            origin_data = { 'DEV_ID' : 'EMS08', 'CURR_DT' : curr,
+            origin_data = { 'DEV_ID' : 'EMS01', 'CURR_DT' : curr,
                             'TEMP' : t, 'HUMID' : h }
             pub_data = json.dumps(origin_data)
             self.client.publish(topic='ems/rasp/data/',
@@ -42,7 +42,7 @@ class publisher(Thread):
 class subscriber(Thread):
     def __init__(self):
         Thread.__init__(self)
-        self.host = '127.0.0.1' # 추후 변경
+        self.host = '192.168.0.17' # 강사서버
         self.port = 1883        
         print('subscriber 스레드 시작')
         self.client = mqtt.Client(client_id='EMS91')
@@ -66,4 +66,4 @@ if __name__ == '__main__':
     thPub = publisher()
     thSub = subscriber()
     thPub.start()    
-    thSub.start() 
+    thSub.start()
