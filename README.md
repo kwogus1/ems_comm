@@ -43,8 +43,7 @@ EMS 데이터 통신 및 제어프로그램
 
 라즈베리파이 구성
 
-![대시보드실행화면]
-(https://raw.githubusercontent.com/kwogus1/ems_comm/main/capture/dashboard.png)
+![대시보드실행화면](https://raw.githubusercontent.com/kwogus1/ems_comm/main/capture/dashboard.png)
 
 대시보드 실행화면
 
