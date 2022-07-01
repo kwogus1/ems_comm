@@ -137,7 +137,7 @@ class MyApp(QMainWindow):
         self.show()
 
     def btnTempAlarmClicked(self):
-        QMessageBox.information(self, '알람', '이상온도로 에어컨 가동')
+        QMessageBox.information(self, '알람', '이상온도로 에어컨 가동',)
 
     # 종료 메시지박스
     def closeEvent(self,signal):
